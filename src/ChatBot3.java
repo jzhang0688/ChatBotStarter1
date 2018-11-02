@@ -134,8 +134,21 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
-	
+
+	private String transformIFeelstatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() - 1);
+		if(lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length()-1);
+		}
+		int psn = findKeyword(statement, "I feel", 0);
+		String restOfStatement = statement.substring(psn+6).trim();
+		return "Why do you feel" + restOfStatement + "?";
+	}
+
+
 	/**
 	 * Take a statement with "I <something> you" and transform it into 
 	 * "Why do you <something> me?"
