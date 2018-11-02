@@ -92,7 +92,7 @@ public class ChatBot1
 		}
 		else if (findKeyword(statement,"I think that",0) >= 0)
 		{
-			response = transformIThinkThatStatement();
+			response = transformIThinkThatStatement(statement);
 		}
 		else
 		{
