@@ -232,6 +232,16 @@ public class ChatBot1
 	 * @return the index of the first occurrence of goal in
 	 *         statement or -1 if it's not found
 	 */
+	private String getRandomResponse()
+    {
+        String[] stringArr = {"I'm ready!","Oh barnacles.","Tartar sauce!", "Order up!", "Fish paste!","No problem-o"};
+        final int NUMBER_OF_RESPONSES = stringArr.length;
+        double r = Math.random();
+        int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
+        String response = stringArr[whichResponse];
+        return response;
+    }
+
 	private int findKeyword(String statement, String goal,
 			int startPos)
 	{
