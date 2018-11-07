@@ -85,10 +85,12 @@ public class ChatBot3
 		else if (findKeyword(statement, "I like",0) >= 0)
 		{
 			response = transformILikeStatement(statement);
+			emotion++;
 		}
 		else if (findKeyword(statement, "sure", 0)>=0)
 		{
 			response = "Let's gooooo!";
+			emotion++;
 		}
 		else {
 			response = getRandomResponse();
