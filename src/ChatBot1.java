@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hahahahaha! What would you like to know about the finest eating establishment under the sea, the Krusty Krab?";
 	}
 	
 	/**
@@ -56,18 +56,18 @@ public class ChatBot1
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Don't forget to respond before you press enter!";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Why so glum, chum?";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "mr krabs") >= 0)
 		{
-			response = "More like LevinTheDream, amiright?";
+			response = "Mister Krabs is my boss!";
 			emotion++;
 		}
 		else if (findKeyword(statement, "folwell") >= 0)
@@ -309,19 +309,6 @@ public class ChatBot1
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse ()
-	{
-		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
-		{	
-			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
-	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
