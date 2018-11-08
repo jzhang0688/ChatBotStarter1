@@ -41,7 +41,7 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, what is up? Tell me what you like!";
 	}
 	
 	/**
@@ -80,15 +80,44 @@ public class ChatBot2
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
-		else
+		}
+		else if (findKeyword(statement, "I like",0) >= 0)
 		{
+			response = transformILikeStatement(statement);
+			emotion++;
+		}
+		else if (findKeyword(statement, "sure", 0)>=0)
+		{
+			response = "Let's gooooo!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "fun", 0) >= 0)
+		{
+			response = "Well, it maybe stupid, but it's also dumb! HAHA!";
+			emotion--;
+		}
+		else if(findKeyword(statement, "dumb",0)>= 0)
+		{
+			response = "dumb people are always blissfully unaware of how dumb they are -- cites from Patrick";
+			emotion--;
+		}
+		else {
 			response = getRandomResponse();
 		}
-		
 		return response;
 	}
-	
+
+	private String transformILikeStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() - 1);
+		if (lastChar.equals(".")) {
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		int psn = findKeyword(statement, "I like", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "I like " + restOfStatement + " too!" +" Would you like "+restOfStatement+ " together sometimes?";
+	}
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
