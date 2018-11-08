@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hahahahaha! What would you like to know about the finest eating establishment under the sea, the Krusty Krab?";
+		return "What would you like to know about the finest eating establishment under the sea, the Krusty Krab?";
 	}
 	
 	/**
@@ -61,25 +61,32 @@ public class ChatBot1
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so glum, chum?";
-                	emotion--;
+			response = "Would a Krabby Patty change your mind?";
+
 		}
 		
 		else if (findKeyword(statement, "mr krabs") >= 0)
 		{
 			response = "Mister Krabs is my boss!";
-			emotion++;
+
 		}
-		else if (findKeyword(statement, "folwell") >= 0)
+		else if (findKeyword(statement, "food") >= 0)
 		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
-			emotion++;
+			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
 		}
-		else if (findKeyword(statement, "goldman") >= 0)
+        else if (findKeyword(statement, "krabby patty") >= 0)
+        {
+            response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
+        }
+		else if (findKeyword(statement, "squidward") >= 0)
 		{
-			response = "Go for the gold, man.";
-			emotion++;
+			response = "Squidward is the cashier here, and my best friend!";
 		}
+        else if (findKeyword(statement, "formula") >= 0)
+        {
+        response = "The Krabby Patty formula is the sole property of the Krusty Krab and is only to be discussed in part or in whole with its creator, Mr. Krabs. Duplication of this formula is punishable by law. Restrictions apply, results may vary.";
+        }
+
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -125,7 +132,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "I know that you want to " + restOfStatement + ", but you SHOULD work at the Krusty Krab! With me, your buddy Spongebot!";
 	}
 	private String transformIThinkThatStatement(String statement)
 	{
@@ -140,7 +147,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I think that", 0);
 		String restOfStatement = statement.substring(psn + 12).trim();
-		return "Why do you think that " + restOfStatement + "?";
+		return "Hm! It's interesting that you think" + restOfStatement + ", but do you know what I think? I think you should have a Krabby Patty!";
 	}
 
 
@@ -164,7 +171,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Wow! You should get" + restOfStatement + "!";
 	}
 	private String transformDidYouKnowThatStatement(String statement)
 	{
@@ -234,7 +241,7 @@ public class ChatBot1
 	 */
 	private String getRandomResponse()
     {
-        String[] stringArr = {"I'm ready!","Oh barnacles.","Tartar sauce!", "Order up!", "Fish paste!","No problem-o"};
+        String[] stringArr = {"I'm ready! For you to ask me a question about the Krusty Krab, that is!","Oh barnacles. You should try asking me about the restaurant, instead!", "Order up! A question about the Krusty Krab, that is!"};
         final int NUMBER_OF_RESPONSES = stringArr.length;
         double r = Math.random();
         int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
@@ -298,27 +305,15 @@ public class ChatBot1
 	 * @param goal the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal)
-	{
-		return findKeyword (statement, goal, 0);
-	}
-	
 
+    private int findKeyword(String statement, String goal)
+    {
+        return findKeyword (statement, goal, 0);
+    }
+}
 
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
-}
+
