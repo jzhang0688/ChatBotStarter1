@@ -61,7 +61,7 @@ public class ChatBot1
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so glum, chum?";
+			response = "Would a Krabby Patty change your mind?";
 
 		}
 		
@@ -70,10 +70,14 @@ public class ChatBot1
 			response = "Mister Krabs is my boss!";
 
 		}
-		else if (findKeyword(statement, "food") >= 0) || (findKeyword(statement,"krabby patty"))
+		else if (findKeyword(statement, "food") >= 0)
 		{
 			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
 		}
+        else if (findKeyword(statement, "krabby patty") >= 0)
+        {
+            response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
+        }
 		else if (findKeyword(statement, "squidward") >= 0)
 		{
 			response = "Squidward is the cashier here, and my best friend!";
@@ -301,12 +305,12 @@ public class ChatBot1
 	 * @param goal the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal)
-	{
-		return findKeyword (statement, goal, 0);
-	}
-	
 
+    private int findKeyword(String statement, String goal)
+    {
+        return findKeyword (statement, goal, 0);
+    }
+}
 
 	/**
 	 * Pick a default response to use if nothing else fits.
