@@ -4,8 +4,11 @@ public class ChatBotRunner
 {
 	public static void main(String[] args)
 	{
+	    //Author: Romando Cooper
 		ChatBot1 chatbot1 = new ChatBot1();
+		//Author: Jie Zhang
 		ChatBot2 chatbot2 = new ChatBot2();
+		//Author: Raymond Hu
 		ChatBot3 chatbot3 = new ChatBot3();
 		Scanner in = new Scanner (System.in);
 		System.out.println("Hi, I'm Spongebot! A chatbot all about your favorite invertebrate Spongebob Squarepants!");
