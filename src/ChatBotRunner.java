@@ -12,6 +12,7 @@ public class ChatBotRunner
 		System.out.println("If you want to hear about the Krusty Krab, type 1!");
 		System.out.println("If you want to know more about me and MY interests, type 2!");
 		System.out.println("If you'd like to hear all about my best pal Squidward, type 3!");
+		System.out.println("If you ever feel like switching, just type switch!");
 		System.out.println("If... you don't want to chat with me at all...then you can just type bye...But I know that we'll have looots of fun together if you don't!");
 		String statement = in.nextLine();
 		statement = statement.trim();
@@ -28,6 +29,10 @@ public class ChatBotRunner
             else if (statement.equals("3"))
             {
                 chatbot3.chatLoop(statement);
+            }
+            else if (statement.equals("switch"))
+            {
+                System.out.println("You've gotta enter a Spongebot before you enter switch!");
             }
             else if ((statement.indexOf("") >= 0) && (statement.length() == 0))
             {

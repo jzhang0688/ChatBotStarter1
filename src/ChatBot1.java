@@ -4,13 +4,11 @@ import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user.
  * This version:
- * @author Brooklyn Tech CS Department
- * @version September 2018
+ * Author: Romando Cooper
  */
 public class ChatBot1
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -58,6 +56,10 @@ public class ChatBot1
 		{
 			response = "Don't forget to respond before you press enter!";
 		}
+		if (statement.equals("switch"))
+		{
+
+		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
@@ -71,6 +73,10 @@ public class ChatBot1
 
 		}
 		else if (findKeyword(statement, "food") >= 0)
+		{
+			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
+		}
+		else if (findKeyword(statement, "menu") >= 0)
 		{
 			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
 		}
@@ -104,6 +110,10 @@ public class ChatBot1
 		else if (findKeyword(statement,"Did you know that",0) >= 0)
 		{
 			response = transformDidYouKnowThatStatement(statement);
+		}
+		else if (findKeyword(statement,"Did you know that",0) >= 0)
+		{
+			response = transformIdLikeToOrderAStatement(statement);
 		}
 		else
 		{
@@ -149,6 +159,21 @@ public class ChatBot1
 		String restOfStatement = statement.substring(psn + 12).trim();
 		return "Hm! It's interesting that you think" + restOfStatement + ", but do you know what I think? I think you should have a Krabby Patty!";
 	}
+	private String transformIdLikeToOrderAStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I'd like to order a", 0);
+		String restOfStatement = statement.substring(psn + 20).trim();
+		return "One " +restOfStatement+ ", coming right up!";
+	}
 
 
 
@@ -171,7 +196,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Wow! You should get" + restOfStatement + "!";
+		return "Wow! You should get " + restOfStatement + "!";
 	}
 	private String transformDidYouKnowThatStatement(String statement)
 	{
