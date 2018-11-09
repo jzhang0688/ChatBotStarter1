@@ -59,6 +59,10 @@ public class ChatBot2
 		{
 			response = "Say something, please.";
 		}
+		else if (findKeyword(statement, "leave") >= 0)
+		{
+			System.exit(0);
+		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{

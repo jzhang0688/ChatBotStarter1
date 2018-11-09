@@ -30,9 +30,9 @@ public class ChatBotRunner
             {
                 chatbot3.chatLoop(statement);
             }
-            else if (statement.equals("switch"))
+            else if (statement.equals("leave"))
             {
-                System.out.println("You've gotta enter a Spongebot before you enter switch!");
+                System.out.println("You've gotta enter a Spongebot before you enter leave!");
             }
             else if ((statement.indexOf("") >= 0) && (statement.length() == 0))
             {

@@ -8,7 +8,11 @@ import java.util.Scanner;
  */
 public class ChatBot1
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	//tellingTime keeps track of how many times Spongebot has told a person a fact.
+	int tellingTime1 = 0;
+	int tellingTime2 = 0;
+	int tellingTime3 = 0;
+	int tellingTime4 = 0;
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -20,7 +24,7 @@ public class ChatBot1
 		System.out.println (getGreeting());
 
 
-		while (!statement.equals("Bye"))
+		while (!statement.equals("leave"))
 		{
 
 
@@ -55,10 +59,11 @@ public class ChatBot1
 		if (statement.length() == 0)
 		{
 			response = "Don't forget to respond before you press enter!";
-		}
-		if (statement.equals("switch"))
-		{
 
+		}
+		else if (findKeyword(statement, "leave") >= 0)
+		{
+		System.exit(0);
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
@@ -69,28 +74,29 @@ public class ChatBot1
 		
 		else if (findKeyword(statement, "mr krabs") >= 0)
 		{
-			response = "Mister Krabs is my boss!";
+			response = "Mister Krabs is my boss! (I've told you this " +tellingTime1+ " times!)";
+			tellingTime1 = tellingTime1 + 1;
 
 		}
 		else if (findKeyword(statement, "food") >= 0)
 		{
-			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
+			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!(I've told you this "+tellingTime2+" times!)";
+			tellingTime2 = tellingTime2 + 1;
 		}
 		else if (findKeyword(statement, "menu") >= 0)
 		{
-			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
+			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!(I've told you this "+tellingTime2+" times!)";
+			tellingTime2 = tellingTime2 + 1;
 		}
-        else if (findKeyword(statement, "krabby patty") >= 0)
-        {
-            response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!";
-        }
 		else if (findKeyword(statement, "squidward") >= 0)
 		{
-			response = "Squidward is the cashier here, and my best friend!";
+			response = "Squidward is the cashier here, and my best friend!(I've told you this "+tellingTime3+" times!)";
+			tellingTime3 = tellingTime3 + 1;
 		}
         else if (findKeyword(statement, "formula") >= 0)
         {
-        response = "The Krabby Patty formula is the sole property of the Krusty Krab and is only to be discussed in part or in whole with its creator, Mr. Krabs. Duplication of this formula is punishable by law. Restrictions apply, results may vary.";
+        response = "The Krabby Patty formula is the sole property of the Krusty Krab and is only to be discussed in part or in whole with its creator, Mr. Krabs. Duplication of this formula is punishable by law. Restrictions apply, results may vary.(I've told you this "+tellingTime4+" times!)";
+			tellingTime4 = tellingTime4 + 1;
         }
 
 
@@ -111,7 +117,7 @@ public class ChatBot1
 		{
 			response = transformDidYouKnowThatStatement(statement);
 		}
-		else if (findKeyword(statement,"Did you know that",0) >= 0)
+		else if (findKeyword(statement,"Id like to order",0) >= 0)
 		{
 			response = transformIdLikeToOrderAStatement(statement);
 		}
@@ -170,8 +176,8 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I'd like to order a", 0);
-		String restOfStatement = statement.substring(psn + 20).trim();
+		int psn = findKeyword (statement, "Id like to order a", 0);
+		String restOfStatement = statement.substring(psn + 19).trim();
 		return "One " +restOfStatement+ ", coming right up!";
 	}
 

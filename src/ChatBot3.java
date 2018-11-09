@@ -49,6 +49,10 @@ public class ChatBot3
 		{
 			response = "I'm sorry, what was that?";
 		}
+		else if (findKeyword(statement, "leave") >= 0)
+		{
+			System.exit(0);
+		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Squidward gets mad when anyone says no to him.";
