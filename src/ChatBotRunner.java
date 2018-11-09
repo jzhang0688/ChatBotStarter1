@@ -37,7 +37,7 @@ public class ChatBotRunner
             {
                 System.out.println("You've gotta enter a Spongebot before you enter leave!");
             }
-            else if ((statement.indexOf("") >= 0) && (statement.length() == 0))
+            else if ((statement.contains("")) && (statement.length() == 0))
             {
                System.out.println("I'm sorry, what was that?");
             }
