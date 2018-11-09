@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * A program to carry on conversations with a human user.
+ * A program to carry on conversations with a human user. // spongebob
  * This version:
  * @author Jie Zhang
  * @version November 2018
