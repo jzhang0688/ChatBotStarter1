@@ -78,6 +78,12 @@ public class ChatBot1
 			tellingTime1 = tellingTime1 + 1;
 
 		}
+		else if (findKeyword(statement, "boss") >= 0)
+		{
+			response = "Mister Krabs is my boss! (I've told you this " +tellingTime1+ " times!)";
+			tellingTime1 = tellingTime1 + 1;
+
+		}
 		else if (findKeyword(statement, "food") >= 0)
 		{
 			response = "As for the food, the main dish on the menu we serve is the delicious Krabby Patty!(I've told you this "+tellingTime2+" times!)";

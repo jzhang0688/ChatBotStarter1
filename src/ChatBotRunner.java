@@ -4,7 +4,7 @@ public class ChatBotRunner
 {
 	public static void main(String[] args)
 	{
-	    //Author: Romando Cooper    
+	    //Author: Romando Cooper
 		ChatBot1 chatbot1 = new ChatBot1();
 		//Author: Jie Zhang
 		ChatBot2 chatbot2 = new ChatBot2();
