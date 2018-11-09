@@ -19,7 +19,7 @@ public class ChatBot3
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-		while (!statement.equals("Bye"))
+		while (!statement.equalsIgnoreCase("Bye"))
 		{
 			statement = in.nextLine();
 			//getResponse handles the user reply
@@ -58,6 +58,21 @@ public class ChatBot3
 			response = "Squidward gets mad when anyone says no to him.";
 			emotion--;
 		}
+		else if (findKeyword(statement, "easter island") >= 0)
+		{
+			response = "That is where Squidward bought his house from.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "squidward") >= 0)
+		{
+			response = "Squidward is the best sea creature ever. Better than a sponge like me!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "jellyfishing") >= 0)
+		{
+			response = "Squidward looooooves to jellyfish!";
+			emotion++;
+		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Squidward gets mad when anyone says no to him.";
@@ -68,23 +83,92 @@ public class ChatBot3
 			response = "Patrick is Squidward's favorite invertebrae! Well, besides me of course.";
 			emotion++;
 		}
+		else if (findKeyword(statement, "summer") >= 0)
+		{
+			response = "Squidward's favorite season is summer! Not that there are any seasons where we live but whatever.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "season") >= 0)
+		{
+			response = "Squidward's favorite season is summer! Not that there are any seasons where we live but whatever.";
+			emotion++;
+		}
+		else if (findKeyword(statement, "instrument") >= 0)
+		{
+			response = "Squidward's favorite instrument is his trusty clarinet!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "clarinet") >= 0)
+		{
+			response = "Squidward loves clarinets!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "krusty krab") >= 0)
+		{
+			response = "Squidward works as a cashier at the good ol' Krusty Krab!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "mr krabs") >= 0)
+		{
+			response = "Squidward gets along with Mr. Krabs so well!";
+			emotion++;
+		}
+		else if (findKeyword(statement, "scrap") >= 0)
+		{
+			response = getRandomResponse();
+			emotion++;
+		}
+		// Cuss words are a part of the code, so if you'll excuse me....
+		else if (statement.indexOf("crap") >= 0)
+		{
+			response = getRandomCussRes();
+			emotion--;
+		}
+		else if (statement.indexOf("shit") >= 0)
+		{
+			response = getRandomCussRes();
+			emotion--;
+		}
+		else if (statement.indexOf("fuck") >= 0)
+		{
+			response = getRandomCussRes();
+			emotion--;
+		}
+		else if (statement.indexOf("bitch") >= 0)
+		{
+			response = getRandomCussRes();
+			emotion--;
+		}
+		// This one is quite vulgar. Brace yourself....
+		else if (statement.indexOf("motherfucker") >= 0)
+		{
+			response = getRandomCussRes();
+			emotion--;
+		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
+			emotion++;
 		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
+			emotion++;
 		}
 		else if (findKeyword(statement, "I like",0) >= 0)
 		{
 			response = transformILikeStatement(statement);
 			emotion++;
 		}
-		else if (findKeyword(statement, "sure", 0)>=0)
+		else if (findKeyword(statement, "I feel",0) >= 0)
 		{
-			response = "Let's gooooo!";
+			response = transformIFeelStatement(statement);
+			emotion++;
+		}
+		else if ((findKeyword(statement, "I",0) >= 0) && (findKeyword(statement, "you", 0) >= 0))
+		{
+			response = transformIYouStatement(statement);
 			emotion++;
 		}
 		else
@@ -104,7 +188,7 @@ public class ChatBot3
 		}
 		int psn = findKeyword(statement, "I like", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "I like " + restOfStatement + " too!" +" Would you like "+restOfStatement+ " together sometimes?";
+		return "Squidward likes " + restOfStatement + " too!" +" I'm sure you two will get along perfectly.";
 	}
 	/**
 	 * Take a statement with "I want to <something>." and transform it into
@@ -123,7 +207,7 @@ public class ChatBot3
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "I'm sure Squidward wants to" + restOfStatement + "as well.";
 	}
 	/**
 	 * Take a statement with "I want <something>." and transform it into
@@ -141,10 +225,10 @@ public class ChatBot3
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "You and Squidward both want " + restOfStatement + ", how interesting!";
 	}
 
-	private String transformIFeelstatement(String statement)
+	private String transformIFeelStatement(String statement)
 	{
 		statement = statement.trim();
 		String lastChar = statement.substring(statement.length() - 1);
@@ -154,7 +238,7 @@ public class ChatBot3
 		}
 		int psn = findKeyword(statement, "I feel", 0);
 		String restOfStatement = statement.substring(psn+6).trim();
-		return "Why do you feel" + restOfStatement + "?";
+		return "You should talk to Squidward, he feels " + restOfStatement + " too.";
 	}
 	/**
 	 * Take a statement with "I <something> you" and transform it into
@@ -173,7 +257,7 @@ public class ChatBot3
 		int psnOfI = findKeyword (statement, "I", 0);
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		return "Squidward would think the same of you, I'm sure.";
 	}
 	/**
 	 * Search for one word in phrase. The search is not case
@@ -255,9 +339,17 @@ public class ChatBot3
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more", "Hmmm.", "Do you really think so?", "You don't say.", "It's all boolean to me.", "So, would you like to go for a walk?", "Could you say that again?"};
+	private String [] randomNeutralResponses = {"I'm ready! I'm ready! I'm ready!", "Aw, tartar sauce!!!", "You mean what we thought they thought we think and thought they thought?", "You'll never beat me, I'm HYDRODYMAMICALLY DESIGNED!", "SOAP SOAP WHAT IS SOAP?", "More soup for your armpit?", "Are you talking to me? No, you're talking next to me!"};
 
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomAngryResponses = {"Aaaaahhhhhhhhh!!!!", "You knucklehead!!!!", "I ain't listening to you!!!", "You foul-mouthed creature!", "How could you???!!!", "Barnacles! Why are you still here?", "Tartar sauce! Just leave me alone already!!!"};
 
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"F is for friends that .......", "U is for ukulele .......", "N is for anytime and anywhere .......", "Lalalalalalalala", "Awwwwww, just the two of us having a chat. How nice." , "I wish Squidward was here so he can also join this amazing conversation we have so far."};
+
+	private String getRandomCussRes ()
+	{
+		Random r = new Random ();
+		return randomCussRes [r.nextInt(randomCussRes.length)];
+	}
+
+	private String [] randomCussRes = {"Now I know Squidward would never say something like that! So you shouldn't either!", "I can't believe my ears! You better hope Squidward didn't hear that.", "I said that to Squidward once, he was not happy." , "That is what gets you in trouble with good samaritans like Squidward."};
 }
