@@ -101,6 +101,22 @@ public class ChatBot2
 			response = "dumb people are always blissfully unaware of how dumb they are -- cites from Patrick";
 			emotion--;
 		}
+		else if (findKeyword(statement, "suck", 0)>=0)
+		{
+			response = "Oh well, I guess i'm not wearing any pants today!";
+		}
+		else if (findKeyword(statement, "fuck", 0)>=0)
+		{
+			response = "Oh well, I guess i'm not wearing any pants today!";
+		}
+		else if (findKeyword(statement, "should")>=0)
+		{
+			response = "No, I like wearing my underwear like this";
+		}
+		else if(findKeyword(statement, "who")>=0)
+		{
+			response = "I’m dirty dan-no i’m dirty dan-i’m dirty dan-i’m dirty daaan….";
+		}
 		else {
 			response = getRandomResponse();
 		}
@@ -289,13 +305,14 @@ public class ChatBot2
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+	private String [] randomNeutralResponses = {"I'm ready! I'm ready! I'm ready!",
+			"Aw, tartar sauce!!!",
+			"You mean what we thought they thought we think and thought they thought?",
+			"You'll never beat me, I'm HYDRODYMAMICALLY DESIGNED!",
+			"SOAP SOAP WHAT IS SOAP?",
+			"More soup for your armpit?",
+			"Are you talking to me? No, you're talking next to me!"
+
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
