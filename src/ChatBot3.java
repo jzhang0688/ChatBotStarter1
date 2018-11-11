@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class ChatBot3
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
-	/**
+    int emotion = 0;
+    /**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
 	 */
@@ -45,6 +45,7 @@ public class ChatBot3
 	{
 		statement = statement.trim();
 		String response = "";
+
 		if ((statement.indexOf("") >= 0) && (statement.length() == 0))
 		{
 			response = "I'm sorry, what was that?";
@@ -60,7 +61,7 @@ public class ChatBot3
 		}
 		else if (findKeyword(statement, "easter island") >= 0)
 		{
-			response = "That is where Squidward bought his house from.";
+		    response = "That is where Squidward bought his house from.";
 			emotion++;
 		}
 		else if (findKeyword(statement, "squidward") >= 0)
@@ -164,10 +165,6 @@ public class ChatBot3
 		{
 			response = transformIYouStatement(statement);
 			emotion++;
-		}
-		else
-		{
-			response = getRandomResponse();
 		}
 		return response;
 	}
@@ -332,7 +329,7 @@ public class ChatBot3
 		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
+
 	private String [] randomNeutralResponses = {"I'm ready! I'm ready! I'm ready!", "Aw, tartar sauce!!!", "You mean what we thought they thought we think and thought they thought?", "You'll never beat me, I'm HYDRODYMAMICALLY DESIGNED!", "SOAP SOAP WHAT IS SOAP?", "More soup for your armpit?", "Are you talking to me? No, you're talking next to me!"};
 
 	private String [] randomAngryResponses = {"Aaaaahhhhhhhhh!!!!", "You knucklehead!!!!", "I ain't listening to you!!!", "You foul-mouthed creature!", "How could you???!!!", "Barnacles! Why are you still here?", "Tartar sauce! Just leave me alone already!!!"};
@@ -340,8 +337,7 @@ public class ChatBot3
 	private String [] randomHappyResponses = {"F is for friends that .......", "U is for ukulele .......", "N is for anytime and anywhere .......", "Lalalalalalalala", "Awwwwww, just the two of us having a chat. How nice." , "I wish Squidward was here so he can also join this amazing conversation we have so far."};
 
 	private String getRandomCussRes ()
-	{
-		Random r = new Random ();
+    {   Random r = new Random ();
 		return randomCussRes [r.nextInt(randomCussRes.length)];
 	}
 
