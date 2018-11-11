@@ -139,12 +139,6 @@ public class ChatBot3
 			response = getRandomCussRes();
 			emotion--;
 		}
-		// This one is quite vulgar. Brace yourself....
-		else if (statement.indexOf("motherfucker") >= 0)
-		{
-			response = getRandomCussRes();
-			emotion--;
-		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
