@@ -105,11 +105,11 @@ public class ChatBot2
 			response = "dumb people are always blissfully unaware of how dumb they are -- cites from Patrick";
 			emotion--;
 		}
-		else if (findKeyword(statement, "suck", 0)>=0)
+		else if (findKeyword(statement, "nope", 0)>=0)
 		{
 			response = "Oh well, I guess i'm not wearing any pants today!";
 		}
-		else if (findKeyword(statement, "fuck", 0)>=0)
+		else if (findKeyword(statement, "beach", 0)>=0)
 		{
 			response = "Oh well, I guess i'm not wearing any pants today!";
 		}
